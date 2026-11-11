@@ -1,0 +1,49 @@
+<section class="section" id="about" aria-labelledby="about-title">
+  <div class="container about-grid">
+    <div class="about-head">
+      <p class="section-kicker">About</p>
+      <h2 class="section-title" id="about-title">From hardware benches to full-stack systems.</h2>
+    </div>
+
+    <div class="about-body">
+      <p class="lead" appReveal>{{ profile.summary }}</p>
+
+      <div class="about-columns" appReveal [revealDelay]="100">
+        <div>
+          <h3>What I'm looking for</h3>
+          <p>
+            A Software Developer Intern role where I can contribute across backend and frontend,
+            and keep learning from a team that cares about how software is built and run.
+          </p>
+        </div>
+        <div>
+          <h3>How I got here</h3>
+          <p>
+            Trainee hardware and data-operations roles came before the full-stack projects —
+            diagnosing faults, maintaining machines and handling records taught me to be careful
+            with systems and with other people's data.
+          </p>
+        </div>
+      </div>
+
+      <dl class="facts" appReveal [revealDelay]="160">
+        <div class="fact">
+          <dt>Based in</dt>
+          <dd>{{ profile.location }}</dd>
+        </div>
+        <div class="fact">
+          <dt>Studying</dt>
+          <dd>BIT, UCSC — expected 2027</dd>
+        </div>
+        <div class="fact">
+          <dt>Focus</dt>
+          <dd>Full-stack development</dd>
+        </div>
+        <div class="fact">
+          <dt>Email</dt>
+          <dd><a class="link-underline" [href]="'mailto:' + profile.email">{{ profile.email }}</a></dd>
+        </div>
+      </dl>
+    </div>
+  </div>
+</section>

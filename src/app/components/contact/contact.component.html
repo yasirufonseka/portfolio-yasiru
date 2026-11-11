@@ -1,0 +1,77 @@
+<section class="section contact" id="contact" aria-labelledby="contact-title">
+  <div class="container">
+    <div class="contact-top">
+      <div class="contact-heading" appReveal>
+        <p class="section-kicker">Contact</p>
+        <h2 class="contact-title" id="contact-title">
+          Let's build<br />
+          something <span class="accent">careful.</span>
+        </h2>
+      </div>
+
+      <div class="contact-copy" appReveal [revealDelay]="100">
+        <p>
+          I'm looking for a Software Developer Intern role. If you have a team working across
+          backend, frontend or both, I'd like to hear about it.
+        </p>
+        <p class="contact-note">Panadura, Sri Lanka · Open to remote and on-site.</p>
+      </div>
+    </div>
+
+    <div class="mail-row" appReveal [revealDelay]="140">
+      <a class="mail-link" [href]="'mailto:' + profile.email">
+        <span class="mail-text">{{ profile.email }}</span>
+        <svg viewBox="0 0 24 24" width="40" height="40" aria-hidden="true">
+          <path d="M6 18 18 6M8.5 6H18v9.5" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+      </a>
+      <button type="button" class="copy-button" (click)="copyEmail()" [attr.aria-label]="copied() ? 'Email address copied' : 'Copy email address'">
+        @if (copied()) {
+          <svg viewBox="0 0 16 16" width="15" height="15" aria-hidden="true">
+            <path d="M2.5 8.5 6 12l7.5-8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+          Copied
+        } @else {
+          <svg viewBox="0 0 16 16" width="15" height="15" aria-hidden="true">
+            <rect x="5.5" y="5.5" width="8" height="8" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.4" />
+            <path d="M10.5 3.5v-1a1 1 0 0 0-1-1h-6a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h1" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" />
+          </svg>
+          Copy email
+        }
+      </button>
+      <span class="visually-hidden" role="status" aria-live="polite">{{ copied() ? 'Email address copied to clipboard' : '' }}</span>
+    </div>
+
+    <dl class="contact-grid" appReveal [revealDelay]="180">
+      <div class="contact-fact">
+        <dt>Location</dt>
+        <dd>{{ profile.location }}</dd>
+      </div>
+      <div class="contact-fact">
+        <dt>Phone</dt>
+        <dd><a class="link-underline" [href]="profile.phoneHref">{{ profile.phone }}</a></dd>
+      </div>
+      <div class="contact-fact">
+        <dt>Local time</dt>
+        <dd>{{ clock.time() }} <span class="tz">Colombo</span></dd>
+      </div>
+      <div class="contact-fact">
+        <dt>Elsewhere</dt>
+        <dd class="social-list">
+          @for (social of socials; track social.label) {
+            <a
+              class="social-link"
+              [href]="social.href"
+              target="_blank"
+              rel="noopener noreferrer"
+              [attr.aria-label]="social.label + ' profile, opens in a new tab'"
+            >
+              {{ social.label }}
+              <span class="social-arrow" aria-hidden="true">↗</span>
+            </a>
+          }
+        </dd>
+      </div>
+    </dl>
+  </div>
+</section>

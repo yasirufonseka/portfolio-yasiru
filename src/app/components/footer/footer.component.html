@@ -1,0 +1,51 @@
+<footer class="site-footer">
+  <div class="container footer-main">
+    <div class="footer-brand">
+      <a class="brand" href="#top">
+        <span class="brand-mark" aria-hidden="true">YF</span>
+        <span>
+          <span class="brand-name">Yasiru Fonseka</span>
+          <span class="brand-role">Aspiring Software Engineer</span>
+        </span>
+      </a>
+      <p class="footer-line">
+        Full-stack work across Java, Spring Boot, Angular and Node.js.
+      </p>
+    </div>
+
+    <nav class="footer-nav" aria-label="Footer">
+      <p class="footer-label">Sections</p>
+      @for (link of links; track link.href) {
+        <a [href]="link.href">{{ link.label }}</a>
+      }
+    </nav>
+
+    <div class="footer-contact">
+      <p class="footer-label">Contact</p>
+      <a class="footer-mail" [href]="'mailto:' + profile.email">{{ profile.email }}</a>
+      <p>{{ profile.location }}</p>
+      <p class="footer-time">Local time · {{ clock.time() }} Colombo</p>
+      <div class="footer-socials">
+        @for (social of socials; track social.label) {
+          <a
+            [href]="social.href"
+            target="_blank"
+            rel="noopener noreferrer"
+            [attr.aria-label]="social.label + ' profile, opens in a new tab'"
+          >{{ social.label }}</a>
+        }
+      </div>
+    </div>
+  </div>
+
+  <div class="container footer-bottom">
+    <p>© {{ year }} Yasiru Fonseka</p>
+    <p class="built">Built with Angular</p>
+    <a class="back-top" href="#top">
+      Back to top
+      <svg viewBox="0 0 16 16" width="13" height="13" aria-hidden="true">
+        <path d="M8 13V3M3.5 7.5 8 3l4.5 4.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+    </a>
+  </div>
+</footer>

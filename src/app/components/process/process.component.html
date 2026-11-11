@@ -1,0 +1,24 @@
+<section class="section process-section" id="process" aria-labelledby="process-title">
+  <div class="container">
+    <div class="section-head process-head">
+      <div>
+        <p class="section-kicker">How I work</p>
+        <h2 class="section-title" id="process-title">A process that starts with the workflow.</h2>
+      </div>
+      <p class="section-intro">
+        The same five habits carried through each project — from the first schema sketch to the
+        deployed application.
+      </p>
+    </div>
+
+    <ol class="steps">
+      @for (step of steps; track step.title; let i = $index) {
+        <li class="step" appReveal [revealDelay]="i * 70">
+          <span class="step-number" aria-hidden="true">{{ (i + 1).toString().padStart(2, '0') }}</span>
+          <h3>{{ step.title }}</h3>
+          <p>{{ step.body }}</p>
+        </li>
+      }
+    </ol>
+  </div>
+</section>

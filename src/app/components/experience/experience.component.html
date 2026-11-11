@@ -1,0 +1,32 @@
+<section class="section" id="experience" aria-labelledby="experience-title">
+  <div class="container experience-grid">
+    <div class="experience-head">
+      <p class="section-kicker">Experience</p>
+      <h2 class="section-title" id="experience-title">Before the code, careful hands.</h2>
+      <p class="section-intro">
+        Hardware, networking and records work — the early roles that shaped how I approach
+        systems and other people's data.
+      </p>
+    </div>
+
+    <ol class="timeline">
+      @for (item of experience; track item.role + item.org; let i = $index) {
+        <li class="entry" appReveal [revealDelay]="i * 70">
+          <div class="entry-meta">
+            <span class="entry-period">{{ item.period }}</span>
+            <span class="entry-index" aria-hidden="true">{{ (i + 1).toString().padStart(2, '0') }}</span>
+          </div>
+          <div class="entry-body">
+            <h3>{{ item.role }}</h3>
+            <p class="entry-org">{{ item.org }}</p>
+            <ul class="entry-points">
+              @for (point of item.highlights; track point) {
+                <li>{{ point }}</li>
+              }
+            </ul>
+          </div>
+        </li>
+      }
+    </ol>
+  </div>
+</section>

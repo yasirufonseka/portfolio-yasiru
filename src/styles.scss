@@ -1,0 +1,341 @@
+/* ------------------------------------------------------------------
+   Global design tokens, reset, and shared primitives.
+   One accent colour, two themes, fluid type.
+   ------------------------------------------------------------------ */
+
+:root {
+  color-scheme: light;
+
+  --bg: #f4f2ed;
+  --bg-soft: #ece9e2;
+  --surface: #fbfaf7;
+  --surface-2: #f0ede6;
+  --text: #131313;
+  --text-soft: #3a3a38;
+  --muted: #67665f;
+  --line: #d9d5cc;
+  --line-strong: #b9b4a9;
+  --accent: #b83a13;
+  --accent-strong: #98300f;
+  --accent-contrast: #ffffff;
+  --accent-wash: rgba(184, 58, 19, 0.09);
+  --shadow: 0 1px 2px rgba(20, 18, 14, 0.05), 0 18px 40px -24px rgba(20, 18, 14, 0.35);
+  --header-bg: rgba(244, 242, 237, 0.82);
+
+  --font-display: 'Space Grotesk', 'Segoe UI', system-ui, -apple-system, sans-serif;
+  --font-body: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+
+  --container: 1200px;
+  --gutter: clamp(1.25rem, 4vw, 3rem);
+  --section-y: clamp(4.5rem, 10vw, 8.5rem);
+  --radius-sm: 10px;
+  --radius: 18px;
+  --radius-lg: 26px;
+
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+:root[data-theme='dark'] {
+  color-scheme: dark;
+
+  --bg: #0b0b0d;
+  --bg-soft: #101012;
+  --surface: #141416;
+  --surface-2: #1a1a1d;
+  --text: #f3f1ec;
+  --text-soft: #d7d4cd;
+  --muted: #98958e;
+  --line: #26262a;
+  --line-strong: #3a3a3f;
+  --accent: #ff6a3d;
+  --accent-strong: #ff855f;
+  --accent-contrast: #160b06;
+  --accent-wash: rgba(255, 106, 61, 0.12);
+  --shadow: 0 1px 2px rgba(0, 0, 0, 0.5), 0 22px 50px -28px rgba(0, 0, 0, 0.9);
+  --header-bg: rgba(11, 11, 13, 0.8);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: clamp(1rem, 0.95rem + 0.2vw, 1.0625rem);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  transition: background-color 0.35s ease, color 0.35s ease;
+}
+
+body.menu-open {
+  overflow: hidden;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  margin: 0;
+  text-wrap: balance;
+}
+
+p {
+  margin: 0;
+  text-wrap: pretty;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul,
+ol,
+dl,
+dd {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--accent-contrast);
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* ---------- layout ---------- */
+
+.container {
+  width: 100%;
+  max-width: var(--container);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.section {
+  padding-block: var(--section-y);
+  border-top: 1px solid var(--line);
+  scroll-margin-top: 84px;
+}
+
+section[id] {
+  scroll-margin-top: 84px;
+}
+
+.section-head {
+  display: grid;
+  gap: 1.25rem;
+  margin-bottom: clamp(2.5rem, 5vw, 4rem);
+}
+
+.section-kicker {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.section-kicker::before {
+  content: '';
+  width: 26px;
+  height: 1px;
+  background: var(--accent);
+}
+
+.section-title {
+  font-size: clamp(2.1rem, 4.4vw, 3.4rem);
+  max-width: 22ch;
+}
+
+.section-intro {
+  color: var(--muted);
+  max-width: 56ch;
+  font-size: 1.02rem;
+}
+
+/* ---------- primitives ---------- */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  min-height: 48px;
+  padding: 0.7rem 1.35rem;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: transform 0.25s var(--ease), background-color 0.25s ease,
+    border-color 0.25s ease, color 0.25s ease;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+.btn:active {
+  transform: translateY(0);
+}
+
+.btn--primary {
+  background: var(--accent);
+  color: var(--accent-contrast);
+}
+
+.btn--primary:hover {
+  background: var(--accent-strong);
+}
+
+.btn--ghost {
+  border-color: var(--line-strong);
+  color: var(--text);
+}
+
+.btn--ghost:hover {
+  border-color: var(--text);
+  background: var(--surface-2);
+}
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.3rem 0.65rem;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  font-size: 0.74rem;
+  letter-spacing: 0.02em;
+  color: var(--text-soft);
+  background: var(--surface);
+  white-space: nowrap;
+}
+
+.link-underline {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  min-height: 44px;
+  color: var(--text);
+  padding-block: 0.5rem;
+}
+
+.link-underline::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0.5rem;
+  width: 100%;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.35s var(--ease);
+}
+
+.link-underline:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.skip-link {
+  position: fixed;
+  top: 0.75rem;
+  left: 0.75rem;
+  z-index: 200;
+  padding: 0.65rem 1rem;
+  border-radius: 8px;
+  background: var(--text);
+  color: var(--bg);
+  font-weight: 500;
+  transform: translateY(-160%);
+  transition: transform 0.2s ease;
+}
+
+.skip-link:focus-visible {
+  transform: translateY(0);
+}
+
+.visually-hidden {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* reveal-on-scroll, applied by the appReveal directive */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}

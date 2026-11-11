@@ -1,0 +1,30 @@
+<section class="section" id="skills" aria-labelledby="skills-title">
+  <div class="container">
+    <div class="section-head skills-head">
+      <div>
+        <p class="section-kicker">Skills</p>
+        <h2 class="section-title" id="skills-title">The stack I build with.</h2>
+      </div>
+      <p class="section-intro">
+        Grouped the way the work happens: language, server, interface, data, security and the
+        tools around them.
+      </p>
+    </div>
+
+    <div class="skill-grid">
+      @for (group of groups; track group.title; let i = $index) {
+        <section class="skill-group" appReveal [revealDelay]="i * 50" [attr.aria-labelledby]="'skill-' + i">
+          <div class="skill-head">
+            <span class="skill-index" aria-hidden="true">{{ (i + 1).toString().padStart(2, '0') }}</span>
+            <h3 [id]="'skill-' + i">{{ group.title }}</h3>
+          </div>
+          <ul>
+            @for (item of group.items; track item) {
+              <li>{{ item }}</li>
+            }
+          </ul>
+        </section>
+      }
+    </div>
+  </div>
+</section>

@@ -1,0 +1,44 @@
+<section class="section education-section" id="education" aria-labelledby="education-title">
+  <div class="container">
+    <div class="section-head education-head">
+      <div>
+        <p class="section-kicker">Education</p>
+        <h2 class="section-title" id="education-title">Formal grounding at UCSC.</h2>
+      </div>
+      <p class="section-intro">
+        Diploma, higher national diploma and the ongoing BIT — all at the University of Colombo
+        School of Computing.
+      </p>
+    </div>
+
+    <div class="education-layout">
+      <ul class="degree-list">
+        @for (item of education; track item.qualification; let i = $index) {
+          <li class="degree" appReveal [revealDelay]="i * 60">
+            <div class="degree-top">
+              <span class="degree-index" aria-hidden="true">{{ (i + 1).toString().padStart(2, '0') }}</span>
+              <span class="degree-meta">{{ item.meta }}</span>
+            </div>
+            <h3>{{ item.qualification }}</h3>
+            <p class="degree-institution">{{ item.institution }}</p>
+            @if (item.note) {
+              <p class="degree-note">{{ item.note }}</p>
+            }
+          </li>
+        }
+      </ul>
+
+      <aside class="certs" appReveal [revealDelay]="120" aria-labelledby="certs-title">
+        <h3 id="certs-title">Certifications</h3>
+        <ul>
+          @for (cert of certifications; track cert) {
+            <li>{{ cert }}</li>
+          }
+        </ul>
+        <p class="certs-note">
+          Both certificates were completed at NAITA in 2020, alongside early technical training.
+        </p>
+      </aside>
+    </div>
+  </div>
+</section>

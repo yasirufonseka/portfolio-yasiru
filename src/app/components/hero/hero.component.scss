@@ -1,0 +1,245 @@
+:host {
+  display: block;
+}
+
+.hero {
+  position: relative;
+  overflow: clip;
+  padding-top: clamp(7rem, 12vh, 9rem);
+  padding-bottom: clamp(2.5rem, 5vh, 4rem);
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.hero-glow {
+  position: absolute;
+  top: -10%;
+  right: -15%;
+  width: min(720px, 80vw);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--accent-wash) 0%, transparent 62%);
+  pointer-events: none;
+}
+
+.hero-inner {
+  position: relative;
+  width: 100%;
+}
+
+.hero-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding-bottom: clamp(1.75rem, 4vh, 3rem);
+  border-bottom: 1px solid var(--line);
+  margin-bottom: clamp(1.75rem, 4vh, 2.75rem);
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-soft);
+}
+
+.status-dot {
+  position: relative;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--accent);
+  flex: none;
+}
+
+.status-dot::after {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  border: 1px solid var(--accent);
+  opacity: 0.5;
+  animation: pulse 2.8s ease-out infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(0.7);
+    opacity: 0.6;
+  }
+  70%,
+  100% {
+    transform: scale(1.5);
+    opacity: 0;
+  }
+}
+
+.hero-place {
+  font-size: 0.8rem;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+.hero-title {
+  font-size: clamp(2.7rem, 7.5vw, 6.75rem);
+  line-height: 0.96;
+  letter-spacing: -0.045em;
+  font-weight: 600;
+  margin-bottom: clamp(2rem, 5vh, 3.5rem);
+}
+
+.hero-title .line {
+  display: block;
+}
+
+.hero-title .line:nth-child(2) {
+  padding-left: clamp(0rem, 4.5vw, 4.5rem);
+}
+
+.hero-title .line:nth-child(3) {
+  padding-left: clamp(0rem, 6.5vw, 6rem);
+}
+
+.accent {
+  color: var(--accent);
+  position: relative;
+  white-space: nowrap;
+}
+
+.hero-bottom {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 0.85fr);
+  gap: clamp(2rem, 5vw, 5rem);
+  align-items: end;
+  padding-bottom: clamp(3rem, 8vh, 6rem);
+}
+
+.lede {
+  max-width: 46ch;
+  color: var(--muted);
+  font-size: clamp(1rem, 1.1vw, 1.12rem);
+  line-height: 1.7;
+  margin-bottom: 2rem;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.hero-stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  border-top: 1px solid var(--line-strong);
+}
+
+.stat {
+  padding: 1.1rem 0.75rem 0 0;
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 0.35rem;
+}
+
+.stat + .stat {
+  padding-left: 1.1rem;
+  border-left: 1px solid var(--line);
+}
+
+.stat dd {
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 2.6vw, 2.5rem);
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+
+.stat dt {
+  font-size: 0.74rem;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+  text-transform: uppercase;
+}
+
+.scroll-cue {
+  position: absolute;
+  right: var(--gutter);
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.68rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.scroll-line {
+  display: block;
+  width: 1px;
+  height: 54px;
+  background: linear-gradient(to bottom, var(--line-strong), transparent);
+}
+
+@media (max-width: 900px) {
+  .hero {
+    min-height: auto;
+    padding-top: 7.5rem;
+  }
+
+  .hero-bottom {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .hero-title .line:nth-child(2),
+  .hero-title .line:nth-child(3) {
+    padding-left: 0;
+  }
+
+  .scroll-cue {
+    display: none;
+  }
+}
+
+@media (max-width: 560px) {
+  .hero-place {
+    display: none;
+  }
+
+  .hero-title {
+    font-size: clamp(2.5rem, 12.5vw, 3.6rem);
+    letter-spacing: -0.04em;
+  }
+
+  .hero-meta {
+    padding-bottom: 1.5rem;
+    margin-bottom: 1.75rem;
+  }
+
+  .eyebrow {
+    font-size: 0.7rem;
+    letter-spacing: 0.04em;
+  }
+
+  .hero-actions .btn {
+    flex: 1 1 auto;
+  }
+
+  .stat dd {
+    font-size: 1.6rem;
+  }
+
+  .stat dt {
+    font-size: 0.63rem;
+    line-height: 1.35;
+  }
+}

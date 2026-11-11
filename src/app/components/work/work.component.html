@@ -1,0 +1,48 @@
+<section class="section" id="work" aria-labelledby="work-title">
+  <div class="container">
+    <div class="section-head">
+      <p class="section-kicker">Selected work</p>
+      <h2 class="section-title" id="work-title">Three systems, built end to end.</h2>
+      <p class="section-intro">
+        A deployed visa operations tool, an ERP for a commercial printing company, and an
+        AI-assisted storefront — each with its own data model, access rules and deployment story.
+      </p>
+    </div>
+
+    <div class="projects">
+      @for (project of projects; track project.title; let i = $index) {
+        <article class="project" appReveal [revealDelay]="i * 60">
+          <div class="project-top">
+            <span class="project-index" aria-hidden="true">{{ project.index }}</span>
+            <div class="project-heading">
+              <h3>{{ project.title }}</h3>
+              <p class="project-context">{{ project.context }}</p>
+            </div>
+            <span class="project-year">{{ project.year }}</span>
+          </div>
+
+          <div class="project-body">
+            <div class="project-outcome">
+              <p class="label">Outcome</p>
+              <p class="outcome">{{ project.outcome }}</p>
+              <ul class="tags" aria-label="Technology stack">
+                @for (tech of project.stack; track tech) {
+                  <li class="tag">{{ tech }}</li>
+                }
+              </ul>
+            </div>
+
+            <div class="project-detail">
+              <p class="label">What I built</p>
+              <ul class="detail-list">
+                @for (detail of project.details; track detail) {
+                  <li>{{ detail }}</li>
+                }
+              </ul>
+            </div>
+          </div>
+        </article>
+      }
+    </div>
+  </div>
+</section>

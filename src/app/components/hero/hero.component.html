@@ -1,0 +1,51 @@
+<section class="hero" id="top" aria-labelledby="hero-title">
+  <div class="hero-glow" aria-hidden="true"></div>
+
+  <div class="container hero-inner">
+    <div class="hero-meta" appReveal>
+      <p class="eyebrow">
+        <span class="status-dot" aria-hidden="true"></span>
+        Open to Software Developer Intern roles
+      </p>
+      <p class="hero-place">{{ profile.location }}</p>
+    </div>
+
+    <h1 class="hero-title" id="hero-title" appReveal>
+      <span class="line">I'm Yasiru.</span>
+      <span class="line">I build <span class="accent">full-stack</span></span>
+      <span class="line">software that ships.</span>
+    </h1>
+
+    <div class="hero-bottom">
+      <div class="hero-copy" appReveal [revealDelay]="120">
+        <p class="lede">
+          BIT undergraduate at UCSC, expected 2027 — working across Java, Spring&nbsp;Boot,
+          Angular and Node.js, with a live application deployed on a self-managed VPS.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn--primary" href="#work">
+            View selected work
+            <svg viewBox="0 0 16 16" width="15" height="15" aria-hidden="true">
+              <path d="M3 8h9M8.5 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </a>
+          <a class="btn btn--ghost" [href]="'mailto:' + profile.email">Get in touch</a>
+        </div>
+      </div>
+
+      <dl class="hero-stats" appReveal [revealDelay]="200">
+        @for (stat of stats; track stat.label) {
+          <div class="stat">
+            <dt>{{ stat.label }}</dt>
+            <dd>{{ stat.value }}</dd>
+          </div>
+        }
+      </dl>
+    </div>
+  </div>
+
+  <div class="scroll-cue" aria-hidden="true">
+    <span>Scroll</span>
+    <span class="scroll-line"></span>
+  </div>
+</section>
